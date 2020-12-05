@@ -7,14 +7,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class YemekSayfasi extends StatefulWidget {
+class AddPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return FoodPage();
+    return _AddPage();
   }
 }
 
-class FoodPage extends State<YemekSayfasi> {
+class _AddPage extends State<AddPage> {
 
   File imageFile;
 
@@ -178,13 +178,13 @@ class FoodPage extends State<YemekSayfasi> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
 
         floatingActionButton: FloatingActionButton(
-            onPressed: createData,
+          onPressed: createData,
           child: Icon(Icons.done_outlined),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.indigoAccent,
         ),
 
         body: SingleChildScrollView(
@@ -196,10 +196,10 @@ class FoodPage extends State<YemekSayfasi> {
               children: [
 
                 Text(
-                    "Yeni gezi ekle!",
+                  "Yeni gezi ekle!",
                   style: TextStyle(
-                       fontSize: 16,
-                    fontWeight: FontWeight.bold
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold
                   ),
                 ),
 
@@ -209,7 +209,7 @@ class FoodPage extends State<YemekSayfasi> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        
+
                         Padding(
                           padding: const EdgeInsets.only(top: 3),
                           child: Row(
@@ -235,19 +235,19 @@ class FoodPage extends State<YemekSayfasi> {
                         ),
 
                         Padding(
-                          padding: const EdgeInsets.only(top: 3),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Notlar",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Color(0xFFFc6076),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Icon(Icons.create_sharp)
-                            ],
-                          )
+                            padding: const EdgeInsets.only(top: 3),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Notlar",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Color(0xFFFc6076),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Icon(Icons.create_sharp)
+                              ],
+                            )
                         ),
 
                         Padding(
@@ -344,9 +344,9 @@ class FoodPage extends State<YemekSayfasi> {
       _formKey2.currentState.save();
       _formKey3.currentState.save();
       DocumentReference ref = await db.collection('post').add({
-        'name': '$name',
-        'location': "$location",
-        'notes': "$notes",
+        'konum': '$name',
+        'notes': "$location",
+        'kisiler': "$notes",
         'image': "$url"
       });
       setState(() => id = ref.documentID);
@@ -357,7 +357,6 @@ class FoodPage extends State<YemekSayfasi> {
         msg: "Yeni gezi kaydedildi!",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
-        timeInSecForIos: 1,
         backgroundColor: Colors.black,
         textColor: Colors.white,
         fontSize: 12.0

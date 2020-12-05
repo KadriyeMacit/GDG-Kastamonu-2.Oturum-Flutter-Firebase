@@ -3,9 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
-import 'package:gdgkastamonufirebase/firstPage.dart';
 import 'package:gdgkastamonufirebase/addPage.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:gdgkastamonufirebase/firstPage.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -61,7 +60,7 @@ class _HomePageState extends State<HomePage> {
         return FirstPage();
         break;
       case 1:
-        return YemekSayfasi();
+        return AddPage();
         break;
       case 2:
         return profileScreen();
